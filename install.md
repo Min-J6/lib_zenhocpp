@@ -13,7 +13,7 @@
     cd ~/workspace/test_zenoh
     git clone https://github.com/eclipse-zenoh/zenoh-c.git
     cd zenoh-c && mkdir build && cd build
-    cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local
+    cmake .. -DCMAKE_BUILD_TYPE=Release
     # ★ sudo를 붙여야 /usr/local에 설치됩니다.
     sudo cmake --build . --target install -j$(nproc)
 ```

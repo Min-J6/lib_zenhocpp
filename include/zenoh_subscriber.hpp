@@ -1,4 +1,5 @@
 #pragma once
+#include "zenoh.hxx"
 #include <chrono>
 #include <iostream>
 #include <string>
@@ -7,11 +8,7 @@
 #include <cstring>
 #include <thread>
 
-#include "zenoh.hxx"
 
-
-namespace Zenoh
-{
 template <typename T>
 class Subscriber {
     static_assert(std::is_standard_layout_v<T> && std::is_trivial_v<T>,
@@ -29,7 +26,7 @@ public:
               []() {} // on_drop
           ))
     {
-        backlog(std::string("Subscribed Topic: " + topic_name));
+        std::cout << "[Subscriber] 토픽 구독 시작: " << topic_name << std::endl;
     }
 
     ~Subscriber() = default;
@@ -59,13 +56,7 @@ private:
         }
     }
 
-    void backlog(const std::string& log)
-    {
-        std::cout << "[BackLog] [Subscriber] " << log << std::endl;
-    }
-
 private:
     zenoh::Session session_;
     zenoh::Subscriber<void> subscriber_;
 };
-} // namespace Zenoh

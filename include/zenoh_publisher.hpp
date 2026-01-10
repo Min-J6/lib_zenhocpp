@@ -1,12 +1,9 @@
 #pragma once
-
+#include "zenoh.hxx"
 #include <iostream>
 #include <string>
 #include <string_view>
-#include "zenoh.hxx"
 
-namespace Zenoh
-{
 template <typename T>
 class Publisher {
     // 컴파일 타임에 T가 POD 타입인지 검사
@@ -18,7 +15,7 @@ public:
         : topic_name_(topic_name),
           session_(zenoh::Session::open(zenoh::Config::create_default()))
     {
-        backlog(std::string("Published Topic: " + topic_name_));
+        std::cout << "[Publish] 토픽 생성: " << topic_name_ << std::endl;
     }
 
     ~Publisher() = default;
@@ -35,14 +32,7 @@ public:
     Publisher& operator=(const Publisher&) = delete;
 
 private:
-    void backlog(const std::string& log)
-    {
-        std::cout << "[BackLog] [Publisher] " << log << std::endl;
-    }
-
-private:
     std::string topic_name_;
     zenoh::Session session_;
 };
-} // namespace Zenoh
 

@@ -19,7 +19,7 @@ workspace/
 ## 1. 설치
 * 예시에서는 3rdparty 디렉토리에서 git clone을 실행합니다
 ```shell
-git clone https://github.com/code2j/lib_zenhocpp.git
+git clone https://github.com/code2j/lib_zenoh.git
 ```
 
 ## 2. CMakeLists.txt
